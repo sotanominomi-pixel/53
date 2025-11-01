@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N Clock</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="manifest" href="manifest.json">
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <h1 class="title">N Clock</h1>
+  </div>
+
+  <div class="tabs">
+    <div id="tabClock" class="tab active">時計</div>
+    <div id="tabStopwatch" class="tab">ストップウォッチ</div>
+    <div id="tabAlarm" class="tab">アラーム</div>
+    <div id="tabSettings" class="tab">設定</div>
+    <select id="langSelect" class="lang-select">
+      <option value="ja">日本語</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+
+  <div class="main">
+    <div id="display" class="time-display">00:00</div>
+
+    <div id="sliderBox" class="slider-box">
+      <div class="label-row">
+        <span id="labelLeft">1日の長さ</span>
+        <span id="labelHours">24 時間</span>
+      </div>
+      <input type="range" id="sliderHours" min="12" max="48" value="24">
+    </div>
+
+    <div id="stopwatchArea" class="controls" style="display:none;">
+      <button id="swStart" class="btn-circle btn-start" data-key-start>Start</button>
+      <button id="swLap" class="btn-circle btn-rect" data-key="btn.lap" disabled>Lap</button>
+      <button id="swReset" class="btn-circle btn-rect" data-key="btn.reset" disabled>Reset</button>
+      <div id="lapList" class="lap-list"></div>
+    </div>
+
+    <div id="alarmArea" style="display:none;">
+      <div class="alarm-controls">
+        <input type="time" id="alarmTime" class="time-input">
+        <button id="alarmSetBtn" class="btn-large" data-key="btn.addAlarm">アラーム追加</button>
+      </div>
+      <div id="alarmsContainer" class="alarms-container"></div>
+    </div>
+
+    <div id="settingsArea" style="display:none;">
+      <div class="settings-row">
+        <span class="setting-label" data-key="settings.showSeconds">秒数表示</span>
+        <label class="switch">
+          <input type="checkbox" id="secondsToggle">
+          <span class="slider-switch"></span>
+        </label>
+      </div>
+      <div class="settings-row">
+        <span class="setting-label" data-key="settings.language">言語</span>
+        <select id="langSelectSettings" class="lang-select">
+          <option value="ja">日本語</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer" data-key="footer">設定は自動で保存されます。</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
